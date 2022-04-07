@@ -1,3 +1,12 @@
+Nat-Run will serve as an organizational/motivational source to encourage people to go out on a run and experience nature 
+by allowing the user to track various running trails with places of interest, as well as setting goals for themselves to visit 
+and complete said running trails. 
+
+ERD - https://drawsql.app/nashville-software-school-1/diagrams/fe-capstone#
+
+Wireframe - https://sketchboard.me/nC9LgHlcvnTP#/
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

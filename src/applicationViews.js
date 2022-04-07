@@ -9,8 +9,8 @@ import { Login } from "./components/auth/Login";
 export const ApplicationViews = () => {
     return (
         <>
-            <Route exact path="/">
-                <Login />
+             <Route exact path="/">
+                <LocalTrailList />
             </Route>
             <Route path="/localTrails">
                 <LocalTrailList />

@@ -32,8 +32,8 @@ fieldset {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
+    color: #49574e;
+    background-color: rgb(255, 255, 255);
     background-clip: padding-box;
     border: 1px solid #ced4da;
     border-radius: .25rem;
@@ -50,9 +50,14 @@ fieldset {
     z-index: 1;
     min-height: 25rem;
     min-width: 45rem;
-    background-color: hsla(0,0%,100%,0.40);
+    background-color: rgba(255, 255, 255, 0.596);
     background-blend-mode: overlay;
     background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+   
 }
 
 .button--close {
@@ -64,4 +69,5 @@ fieldset {
     min-width: 15rem;
     min-height: 5rem;
 }
+
 

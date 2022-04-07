@@ -25,21 +25,19 @@ export const LocalTrailList = () => {
             )
 
         const handleViewBtnClick = (trailRecord) => {
-            console.log(trailRecord)
+            
             setUserTrails(trailRecord)
-            var named = userTrails.name; 
+            const named = userTrails.name; 
             console.log('named: ', trailRecord.name);
             console.log('userTrails: ', userTrails);
             console.log('userTrails.id: ', userTrails.id);
-            var id = trailRecord.id;
-            var name = trailRecord.name;
+            const id = trailRecord.id;
+            const name = trailRecord.name;
         
         const userTrail = {
-            id: id,
+            userId: localStorage.getItem("user"),
             trailName: name,
-            test: 2,
-            userId: 1,
-            localtrailId: 1
+            localTrailId: 1
         }
         console.log(userTrail);
         const fetchOption = {
@@ -55,23 +53,39 @@ export const LocalTrailList = () => {
         .then(() => {history.push("/myTrails")}
         )
     }
+
+    const deleteTrails = (id) => {
+        fetch(`http://localhost:8088/localTrails/${id}`, {
+            method: "DELETE"
+        })
+            /*.then((data) => {
+                setTrails(data);
+                fetchTrails();
+                console.log("something");
+
+            }
+            )*/
+            fetchTrails();
+            
+    }
             
     return (
         
-        <>
+        <div>
         <h2>Local Trails</h2>
         {
             trails.map(
                 (localTrailsObject) => {
-                    return <p key={localTrailsObject.id}>{localTrailsObject.name}
-                    <GrFavorite key={localTrailsObject.id} onClick={() => handleViewBtnClick(localTrailsObject)} /> </p>
+                    return <><p key={localTrailsObject.id}>{localTrailsObject.name}
+                        <GrFavorite key={localTrailsObject.id} onClick={() => handleViewBtnClick(localTrailsObject)} /> </p>
+                        <button key={`trail--${localTrailsObject.id}`}  onClick={() => { deleteTrails(localTrailsObject.id); } }>Delete</button></>
                     
                 }
                 )
             }
             
-        </>
         
+        </div>
         
     )
 }

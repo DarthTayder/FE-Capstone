@@ -5,11 +5,12 @@ import "./Login.css"
 
 export const Login = () => {
     const [email, set] = useState("")
+    
     const existDialog = useRef()
     const history = useHistory()
 
     const existingUserCheck = () => {
-        return fetch(`http://localhost:8088/customers?email=${email}`)
+        return fetch(`http://localhost:8088/users?email=${email}`)
             .then(res => res.json())
             .then(user => user.length ? user[0] : false)
     }
@@ -19,8 +20,9 @@ export const Login = () => {
         existingUserCheck()
             .then(exists => {
                 if (exists) {
-                    localStorage.setItem("honey_customer", exists.id)
-                    history.push("/")
+                    localStorage.setItem("user", exists.id);
+                    
+                    history.push("/localTrails")
                 } else {
                     existDialog.current.showModal()
                 }
@@ -28,6 +30,7 @@ export const Login = () => {
     }
 
     return (
+        <div className="Login">
         <main className="container--login">
             <dialog className="dialog dialog--auth" ref={existDialog}>
                 <div>User does not exist</div>
@@ -57,6 +60,7 @@ export const Login = () => {
                 <Link to="/register">Not a member yet?</Link>
             </section>
         </main>
+    </div>
     )
 }
 
